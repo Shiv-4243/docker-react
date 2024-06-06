@@ -19,7 +19,7 @@ pipeline {
     stage('run image') {
       steps {
         // docker run
-        sh 'docker run -d -p 8080:8080 shivaraj/docker-react'
+        sh 'docker run -d -p 8000:8000 shivaraj/docker-react'
       }
     }
     
