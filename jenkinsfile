@@ -1,0 +1,34 @@
+pipeline {
+  agent any
+  
+  tools{
+        jdk 'jdk11'
+        docker 'latest'
+        }
+  
+  stages {
+    stage('Git Checkout') {
+      steps {
+        // Git checkout
+        git branch: 'docker-react', url: 'https://github.com/Shiv-4243/docker-react.git'
+      }
+    }
+    
+    stage('build image') {
+      steps {
+        // build image
+        sh 'docker build -t shivaraj/docker-react -f Dokerfile.dev .'
+      }
+    }
+    
+    stage('run image') {
+      steps {
+        // docker run
+        sh 'docker run shivaraj/docker-react npm run test -- -- coverage'
+      }
+    }
+    
+    
+  }
+}
+
