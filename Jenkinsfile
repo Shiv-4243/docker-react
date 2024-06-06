@@ -12,14 +12,14 @@ pipeline {
     stage('build image') {
       steps {
         // build image
-        sh 'docker build -t shivaraj/docker-react -f Dokerfile.dev .'
+        sh 'docker build . -t shivaraj/docker-react'
       }
     }
     
     stage('run image') {
       steps {
         // docker run
-        sh 'docker run -d -p 8080:8080 shivaraj/docker-react '
+        sh 'docker run -d -p 8080:8080 shivaraj/docker-react'
       }
     }
     
