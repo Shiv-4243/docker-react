@@ -5,7 +5,7 @@ pipeline {
     stage('Git Checkout') {
       steps {
         // Git checkout
-        git branch: 'docker-react', url: 'https://github.com/Shiv-4243/docker-react.git'
+        git branch: 'main', url: 'https://github.com/Shiv-4243/docker-react.git'
       }
     }
     
@@ -19,7 +19,7 @@ pipeline {
     stage('run image') {
       steps {
         // docker run
-        sh 'docker run shivaraj/docker-react npm run test -- -- coverage'
+        sh 'docker run -d -p 8080:8080 shivaraj/docker-react '
       }
     }
     
