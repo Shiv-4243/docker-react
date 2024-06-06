@@ -12,7 +12,7 @@ pipeline {
     stage('build image') {
       steps {
         // build image
-        bat 'docker build -t shivaraj/docker-react -f dockerfile.dev .'
+        bat 'docker build -t shivaraj/docker-react -f Dockerfile.dev .'
       }
     }
     
