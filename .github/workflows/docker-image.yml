@@ -18,7 +18,7 @@ jobs:
     - name: Build the Docker image
       run: docker build -t shivaraj .
 
-     steps:
+    steps:
     - uses: actions/checkout@v4
     - name: run the Docker image
       run: docker run shivaraj
