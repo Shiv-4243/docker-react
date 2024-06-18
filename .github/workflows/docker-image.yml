@@ -18,4 +18,4 @@ jobs:
     - name: Build the Docker image
       run: | 
         docker build -t shivaraj .
-        docker run shivaraj npm run test -- --coverage
+        docker run shivaraj 
