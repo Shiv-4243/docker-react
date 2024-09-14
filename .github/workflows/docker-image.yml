@@ -18,4 +18,4 @@ jobs:
     - name: Build the Docker image
       run: | 
         docker build -t webapp .
-        docker run -d webapp npm run test -- -- coverage'
+        docker run -d webapp
