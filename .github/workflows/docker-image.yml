@@ -9,34 +9,21 @@ on:
 
 jobs:
 
-  build_image:
-
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Build the Docker image
-      run: | 
+      run: |
         docker build -t webapp .
-        docker run -d webapp
+    
+    - name: Run the Docker image
+      run: |
+        docker run -d -p 3000:3000 --name webapp-container webapp
+        sleep 15 # Allow time for the container to start
 
-  run_image:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: run the Docker image
-      run: | 
-        docker run -d webapp
-
-  test_curl:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: curling
-      run: | 
-        curl http://localhost:3000 
-  
+    - name: Test the Docker image with curl
+      run: |
+        curl http://localhost:3000
